@@ -387,7 +387,7 @@ class KarelDatagramGenerator{
         switch (packetSign){
             case 1:
                 // case SYN
-                buff[8] = 1;
+                buff[8] = 4;
                 break;
             case 2:
                 // case FIN
@@ -395,7 +395,7 @@ class KarelDatagramGenerator{
                 break;
             case 4:
                 // case RST
-                buff[8] = 4;                
+                buff[8] = 1;                
                 break;
             case 0:
                 // case CLEAR
@@ -843,7 +843,7 @@ class KarelDatagramParser{
     }
     
     public boolean isRST(){
-        return data[8]==4;
+        return data[8]==1;
     }
     
     public boolean isFIN(){
@@ -851,7 +851,7 @@ class KarelDatagramParser{
     }
     
     public boolean isSYN(){
-        return data[8]==1;
+        return data[8]==4;
     }
     
     public DatagramPacket getPacket() {
